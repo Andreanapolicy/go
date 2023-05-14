@@ -13,6 +13,12 @@ func main() {
 }
 
 func handleMain(w http.ResponseWriter, r *http.Request) {
+	query := r.URL.Query()
+	if query.Get("q") == "1" {
+		log.Println("all right")
+		return
+	}
+	fmt.Fprintf(w, "GET params: ", r.URL.Query())
 	_, _ = fmt.Fprintf(w, "Hello, world!")
 }
 
